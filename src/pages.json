@@ -1,10 +1,22 @@
 {
 	"pages": [ 
+		{
+			"path": "pages/video/index",
+			"style": {
+				"navigationBarTitleText": "精美视频"
+			}
+		},
 		 
 		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/imgCategory/index",
+			"style": {
+				"navigationBarTitleText": "图片分类"
 			}
 		},
 		{
@@ -25,12 +37,7 @@
 				"navigationBarTitleText": "横屏"
 			}
 		},
-		{
-			"path": "pages/video/index",
-			"style": {
-				"navigationBarTitleText": "精美视频"
-			}
-		},
+		
 		{
 			"path": "pages/search/index",
 			"style": {

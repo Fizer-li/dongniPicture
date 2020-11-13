@@ -53,7 +53,7 @@ export default {
         { title: "最新" },
         { title: "专辑" },
       ],
-      current: 0,
+      current: 1,
     };
   },
   methods: {
@@ -81,8 +81,6 @@ export default {
       transform: translateY(-50%);
     }
   }
-  .home_tab_content {
-
-  }
+  
 }
 </style>

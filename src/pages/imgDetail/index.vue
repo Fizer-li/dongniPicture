@@ -143,8 +143,8 @@ export default {
   methods: {
     //给当前页面赋值
     getData() {
-      const {imgList} = getApp().globalData;
-      this.imgDetail = imgList[this.imgIndex]
+      const { imgList } = getApp().globalData;
+      this.imgDetail = imgList[this.imgIndex];
       this.imgDetail.cnTime = moment(this.imgDetail.atime * 1000).fromNow();
       //发送请求，获取热门评论
       this.getComments(this.imgDetail.id);
@@ -167,26 +167,42 @@ export default {
     },
     //滑动事件
     handleSwiperAction(e) {
-      const {imgList} = getApp().globalData;
-      if(e.direction === "left" && this.imgIndex < imgList.length -1) {
+      const { imgList } = getApp().globalData;
+      if (e.direction === "left" && this.imgIndex < imgList.length - 1) {
         this.imgIndex++;
         this.getData();
-      }else if (e.direction === "right" && this.imgIndex > 0) {
+      } else if (e.direction === "right" && this.imgIndex > 0) {
         this.imgIndex--;
         this.getData();
-      }else {
+      } else {
         uni.showToast({
-          title: '没有数据了',
-          icon: 'none'
-        })
+          title: "没有数据了",
+          icon: "none",
+        });
       }
-      
+
       console.log(e);
     },
     //点击下载图片
-    handleDownload() {
+    async handleDownload() {
+      // 1.将图片从远程下载到小程序缓存
+      // 2.从缓存中下载到本地
+      await uni.showLoading({
+        title: '下载中'
+      });
+      const result1 = await uni.downloadFile({ url: this.imgDetail.img });
+      const { tempFilePath } = result1[1];
 
-    }
+      const result2 = await uni.saveImageToPhotosAlbum({
+        filePath: tempFilePath,
+      });
+
+      uni.hideLoading();
+      await uni.showToast({
+        title: '下载成功',
+        icon: 'success'
+      });
+    },
   },
 };
 </script>
