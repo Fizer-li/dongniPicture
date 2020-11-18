@@ -15,7 +15,7 @@
       </view>
       <view class="video_tab_content">
         <view v-if="current < 4"><video-main :urlObj="{url:items[current].url,params:items[current].params}"></video-main></view>
-        <view v-if="current===4"><video-category></video-category></view>
+        <view v-if="current===4"><video-category :url="items[current].url"></video-category></view>
       </view>
     </view>
   </view>
