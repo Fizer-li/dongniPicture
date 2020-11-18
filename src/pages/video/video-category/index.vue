@@ -1,5 +1,5 @@
 <template>
-  <view>5</view>
+  <view>敬请期待</view>
 </template>
 
 <script>
